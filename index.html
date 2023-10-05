@@ -9,6 +9,52 @@
     <title>Library</title>
 </head>
 <body>
-    
+    <form action="" method="post" id="hiddenForm">
+        <legend>Let's do this!</legend>
+        <div class="inputcontainer">
+          <div class="form-wrapper">
+            <div>
+              <label for="author">AUTHOR</label>
+              <input type="text" name="author" id="author"  placeholder="Author"required />
+            </div>
+            <div>
+              <label for="title">TITLE</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                required
+                placeholder="Title"
+              />
+            </div>
+        
+            <div>
+              <label for="pages">PAGES</label>
+              <input type="number" name="pages" id="pages" placeholder="Pages" required />
+            </div>
+           
+          </div>
+       <div>
+           <label for="myCheckbox">READ</label>
+              <input type="checkbox" id="myCheckbox">
+       </div>
+
+        </div>
+
+       
+         
+           
+          
+        
+      </form>
+    </div>
+
+
+    <button type="button" id="new-book" onclick="toggleForm()">ADD BOOK</button>
+
+
+<div id="book-container"></div>
+
+
 </body>
 </html>

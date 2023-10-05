@@ -6,71 +6,100 @@
 // Button on each book display to toggle read status.
 // Create function on Book prototype to toggle a book's read status.
 
+const myLibrary = [];
+console.log(myLibrary);
 
 
+function myLibraryDisplay (){
 
+    let bookContainer = document.getElementById('book-container');
+    bookContainer.textContent = ""; 
 
+    for( let i in myLibrary ) {
+        let bookDisplay = document.createElement("div")
+        let book = myLibrary[i]
+        
+        bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages. ${book.readStatus()}`;
+        bookContainer.appendChild(bookDisplay);
+    }
 
+   
+}
 
-const myLibrary = [
-    { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling" },
-    { title: "Percy Jackson & The Olympians: The Lightning Thief", author: "Rick Riordan" },
-    { title: "The Hobbit", author: "J.R.R. Tolkien" },
-    { title: "Eragon", author: "Christopher Paolini" },
-    { title: "His Dark Materials: The Golden Compass", author: "Philip Pullman" },
-    { title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", author: "C.S. Lewis" },
-    { title: "Shadow and Bone", author: "Leigh Bardugo" }
-];
+function Book(title, author, pages, read) {
+  this.title = title;
 
-    function Book(title, author, pages) {
-    this.title = title;
-  
-    this.author = author;
-  
-    this.pages = pages;
-  
-    this.status = function read() {
-      return console.log(
-        "I have read " +
-          this.title +
-          " " +
-          "by" +
-          " " +
-          this.author +
-          " with " +
-          this.pages +
-          " pages" +
-          "."
-      );
-    };
-    this.statusNot = function Not() {
-      return console.log(
-        "I have not read " +
-          this.title +
-          " by " +
-          this.author +
-          " with " +
-          this.pages +
-          " pages" +
-          "."
-      );
-    };
+  this.author = author;
+
+  this.pages = pages;
+  this.read = read;
+}
+
+Book.prototype.readStatus = function () {
+  if (this.read === false) {
+    return "I have not read this book.";
+  } else {
+    return "I have  read this book.";
   }
-  
-  const firstBook = new Book("Harry Potter", "jk rowling", 800);
-  const secondBook = new Book("Dune", "Frank Herbert", 700);
-  
-  firstBook.status();
-  firstBook.statusNot();
-  
-  secondBook.status();
-  secondBook.statusNot();
-  
-  
-  
-  
-  
-  
-  
-  
-  
+};
+
+let button = document.getElementById("new-book");
+button.addEventListener("click", function(){
+    myLibraryDisplay ()
+})
+
+function toggleForm() {
+    
+    let form = document.getElementById('hiddenForm');
+    if (form.style.display === 'none') {
+        form.style.display = 'block'; 
+    } else {
+        form.style.display = 'none'; 
+    }
+}
+
+
+let form = document.getElementById('hiddenForm');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log("Form Submitted!")
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value; 
+    let read = document.getElementById('myCheckbox').checked;
+    
+    let newBook = new Book(title, author, pages, read);
+    console.log(newBook);
+    myLibrary.push(newBook);
+    console.log(myLibrary);
+    myLibraryDisplay(); 
+    
+    form.reset(); 
+    form.style.display = 'none'; 
+});
+
+
+
+
+const firstBook = new Book(
+  "Harry Potter and the Sorcerer's Stone",
+  "jk rowling",
+  320,
+  false
+);
+myLibrary.push(firstBook);
+
+
+
+const secondBook = new Book("Dune", "Frank Herbert", 896, false);
+myLibrary.push(secondBook);
+
+
+const thirdBook = new Book(" Foundation", "Isaac Asimov", 255, false);
+
+myLibrary.push(thirdBook);
+
+console.log(firstBook);
+console.log(secondBook);
+console.log(thirdBook);
