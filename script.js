@@ -13,14 +13,42 @@
 
 
 const myLibrary = [
-    { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling" },
-    { title: "Percy Jackson & The Olympians: The Lightning Thief", author: "Rick Riordan" },
-    { title: "The Hobbit", author: "J.R.R. Tolkien" },
-    { title: "Eragon", author: "Christopher Paolini" },
-    { title: "His Dark Materials: The Golden Compass", author: "Philip Pullman" },
-    { title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", author: "C.S. Lewis" },
-    { title: "Shadow and Bone", author: "Leigh Bardugo" }
+    { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", pages: 309 },
+    { title: "Percy Jackson & The Olympians: The Lightning Thief", author: "Rick Riordan", pages: 377 },
 ];
+
+
+function addBookToLibrary(title, author, pages) {
+    let newBook = new Book(title, author, pages);
+    myLibrary.push(newBook);
+}
+
+function getInputValues() {
+   
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+
+    addBookToLibrary(title, author, pages)
+}
+
+
+function displayLibrary() {
+    
+    let libraryContainer = document.getElementById('library-container'); 
+    
+    for (let i in myLibrary) {
+        const book = myLibrary[i];
+        let showBook = document.createElement('div'); 
+        showBook.textContent = `${book.title} by ${book.author}, ${book.pages} pages`;
+        libraryContainer.appendChild(showBook);
+    }
+}
+
+
+
+
+
 
     function Book(title, author, pages) {
     this.title = title;
