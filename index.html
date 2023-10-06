@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="normalize.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
     <script src="script.js" defer></script>
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
+    <form action="" method="post" id="hiddenForm">
+      <legend>Let's do this!</legend>
+
+      <div>
+        <label for="author">AUTHOR</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="Author"
+          required
+        />
+      </div>
+      <div>
+        <label for="title">TITLE</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          required
+          placeholder="Title"
+        />
+      </div>
+
+      <div>
+        <label for="pages">PAGES</label>
+        <input
+          type="number"
+          name="pages"
+          id="pages"
+          placeholder="Pages"
+          required
+        />
+      </div>
+
+      <label for="myCheckbox">READ</label>
+      <input type="checkbox" id="myCheckbox" />
     
+<<<<<<< HEAD
 <h1></h1>
     <form action="" method="post">
         <legend>Let's do this!</legend>
@@ -59,3 +97,14 @@
 
 </body>
 </html>
+=======
+    
+      <input type="submit" value="Add Book">
+    </form>
+
+    <div id="book-container"></div>
+
+    <button type="button" id="new-book">ADD BOOK</button>
+  </body>
+</html>
+>>>>>>> refactor-library

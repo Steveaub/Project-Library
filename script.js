@@ -1,104 +1,70 @@
-// Function to add a new book from user input into an array.
-// Function to loop through array, displaying each book in a table or card.
-// "NEW BOOK" button to open a form for book details: author, title, pages, read status, etc.
-// Button on each book display to remove the book.
-// Associate DOM elements with book objects via data-attribute for array index.
-// Button on each book display to toggle read status.
-// Create function on Book prototype to toggle a book's read status.
+document.addEventListener('DOMContentLoaded', (event) => {
+    const myLibrary = [];
 
-
-
-
-
-
-
-const myLibrary = [
-    { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", pages: 309 },
-    { title: "Percy Jackson & The Olympians: The Lightning Thief", author: "Rick Riordan", pages: 377 },
-];
-
-
-function addBookToLibrary(title, author, pages) {
-    let newBook = new Book(title, author, pages);
-    myLibrary.push(newBook);
-}
-
-function getInputValues() {
-   
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pages").value;
-
-    addBookToLibrary(title, author, pages)
-}
-
-
-function displayLibrary() {
-    
-    let libraryContainer = document.getElementById('library-container'); 
-    
-    for (let i in myLibrary) {
-        const book = myLibrary[i];
-        let showBook = document.createElement('div'); 
-        showBook.textContent = `${book.title} by ${book.author}, ${book.pages} pages`;
-        libraryContainer.appendChild(showBook);
+    function Book(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
-}
 
-
-
-
-
-
-    function Book(title, author, pages) {
-    this.title = title;
-  
-    this.author = author;
-  
-    this.pages = pages;
-  
-    this.status = function read() {
-      return console.log(
-        "I have read " +
-          this.title +
-          " " +
-          "by" +
-          " " +
-          this.author +
-          " with " +
-          this.pages +
-          " pages" +
-          "."
-      );
+    Book.prototype.readStatus = function() {
+        if (this.read === false) {
+            return "I have not read this book.";
+        } else {
+            return "I have read this book.";
+        }
     };
-    this.statusNot = function Not() {
-      return console.log(
-        "I have not read " +
-          this.title +
-          " by " +
-          this.author +
-          " with " +
-          this.pages +
-          " pages" +
-          "."
-      );
-    };
-  }
-  
-  const firstBook = new Book("Harry Potter", "jk rowling", 800);
-  const secondBook = new Book("Dune", "Frank Herbert", 700);
-  
-  firstBook.status();
-  firstBook.statusNot();
-  
-  secondBook.status();
-  secondBook.statusNot();
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+    function myLibraryDisplay() {
+        const bookContainer = document.getElementById("book-container");
+        bookContainer.textContent = "";
+
+        for (let i in myLibrary) {
+            const bookDisplay = document.createElement("div");
+            const book = myLibrary[i];
+
+            bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages. ${book.readStatus()}`;
+            bookContainer.appendChild(bookDisplay);
+        }
+    }
+
+    const form = document.getElementById("hiddenForm");
+    form.style.display = "none"; // Hide form on page load
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const pages = document.getElementById("pages").value;
+        const read = document.getElementById("myCheckbox").checked;
+
+        const newBook = new Book(title, author, pages, read);
+        myLibrary.push(newBook);
+
+        myLibraryDisplay();
+        form.reset();
+        form.style.display = "none"; // Hide form after submission
+    });
+
+    document.getElementById("new-book").addEventListener("click", function() {
+        if (form.style.display === "none") {
+            form.style.display = "block"; // Show form
+        } else {
+            form.style.display = "none"; // Hide form
+        }
+    });
+
+    // Sample books
+    const firstBook = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 320, false);
+    myLibrary.push(firstBook);
+
+    const secondBook = new Book("Dune", "Frank Herbert", 896, false);
+    myLibrary.push(secondBook);
+
+    const thirdBook = new Book("Foundation", "Isaac Asimov", 255, false);
+    myLibrary.push(thirdBook);
+
+    myLibraryDisplay(); // Display initial books
+});
