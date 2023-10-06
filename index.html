@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="normalize.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
     <script src="script.js" defer></script>
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <form action="" method="post" id="hiddenForm">
-        <legend>Let's do this!</legend>
-        <div class="inputcontainer">
-          <div class="form-wrapper">
-            <div>
-              <label for="author">AUTHOR</label>
-              <input type="text" name="author" id="author"  placeholder="Author"required />
-            </div>
-            <div>
-              <label for="title">TITLE</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                required
-                placeholder="Title"
-              />
-            </div>
-        
-            <div>
-              <label for="pages">PAGES</label>
-              <input type="number" name="pages" id="pages" placeholder="Pages" required />
-            </div>
-           
-          </div>
-       <div>
-           <label for="myCheckbox">READ</label>
-              <input type="checkbox" id="myCheckbox">
-       </div>
+      <legend>Let's do this!</legend>
 
-        </div>
+      <div>
+        <label for="author">AUTHOR</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="Author"
+          required
+        />
+      </div>
+      <div>
+        <label for="title">TITLE</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          required
+          placeholder="Title"
+        />
+      </div>
 
-       
-         
-           
-          
-        
-      </form>
-    </div>
+      <div>
+        <label for="pages">PAGES</label>
+        <input
+          type="number"
+          name="pages"
+          id="pages"
+          placeholder="Pages"
+          required
+        />
+      </div>
 
+      <label for="myCheckbox">READ</label>
+      <input type="checkbox" id="myCheckbox" />
+    
+    
+      <input type="submit" value="Add Book">
+    </form>
 
-    <button type="button" id="new-book" onclick="toggleForm()">ADD BOOK</button>
+    <div id="book-container"></div>
 
-
-<div id="book-container"></div>
-
-
-</body>
+    <button type="button" id="new-book">ADD BOOK</button>
+  </body>
 </html>
