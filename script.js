@@ -8,12 +8,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         this.read = read;
     }
 
-    Book.prototype.readStatus = function() {
-        if (this.read === false) {
-            return "I have not read this book.";
-        } else {
-            return "I have read this book.";
-        }
+ 
+
+    // Method to toggle read status
+    Book.prototype.toggleReadStatus = function() {
+        this.read = !this.read;
     };
 
     function myLibraryDisplay() {
@@ -24,9 +23,47 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const bookDisplay = document.createElement("div");
             const book = myLibrary[i];
 
-            bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages. ${book.readStatus()}`;
+            bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages.`;
+            
+            // Create delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.dataset.index = i;
+            deleteButton.addEventListener("click", removeBook);
+            bookDisplay.appendChild(deleteButton);   
+
+            // Create and append readButton
+            const readButton = document.createElement("button");
+            readButton.textContent = myLibrary[i].read ? "Read" : "Unread";
+            readButton.dataset.index = i;
+            readButton.addEventListener("click", toggleReadStatus);
+            bookDisplay.appendChild(readButton);
+
+            // Append bookDisplay to bookContainer
             bookContainer.appendChild(bookDisplay);
         }
+    }
+
+    function toggleReadStatus(event) {
+        // Get index from data attribute of clicked read button
+        const index = event.target.dataset.index;
+    
+        // Toggle read status of book in myLibrary array
+        myLibrary[index].toggleReadStatus();
+    
+        // Re-render book display to reflect the changes
+        myLibraryDisplay();
+    }
+
+    function removeBook(event) {
+        // Get index from data attribute of clicked delete button
+        const index = event.target.dataset.index;
+    
+        // Remove book from myLibrary array
+        myLibrary.splice(index, 1);
+    
+        // Re-render book display
+        myLibraryDisplay();
     }
 
     const form = document.getElementById("hiddenForm");
