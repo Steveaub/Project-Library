@@ -18,59 +18,63 @@
 
 
 
-        <button type="button" id="new-book"><span class="material-symbols-outlined">
-            add
-            </span>ADD BOOK</button>
-
     </header>
     
-    <div class="book-list-label"><u>Book List</u></div>
-    <form action="" method="post" id="hiddenForm">
-      
-
-      <div>
-        <label for="author">AUTHOR</label>
-        <input
-          type="text"
-          name="author"
-          id="author"
-          placeholder="Author"
-          required
-        />
-      </div>
-      <div>
-        <label for="title">TITLE</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          required
-          placeholder="Title"
-        />
-      </div>
-
-      <div>
-        <label for="pages">PAGES</label>
-        <input
-          type="number"
-          name="pages"
-          id="pages"
-          placeholder="111"
-          min="1"
-          required
-        />
-      </div>
-
-      <label for="myCheckbox">READ</label>
-      <input type="checkbox" id="myCheckbox" />
+    <div class="container">
+        
+        <div class="add-wrapper">
     
-    
-      <input type="submit" value="submit">
-    </form>
+            <button type="button" id="new-book"><span class="material-symbols-outlined">
+                add
+                </span>ADD BOOK</button>
+    </div>
+        <div id="overlay"></div>
+        <form action="" method="post" id="hiddenForm">
+        
+          <div>
+            <label for="author" hidden>AUTHOR</label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              required
+            />
+          </div>
+          <div>
+            <label for="title" hidden>TITLE</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              required
+              placeholder="Title"
+            />
+          </div>
+          <div>
+            <label for="pages" hidden>PAGES</label>
+            <input
+              type="number"
+              name="pages"
+              id="pages"
+              placeholder="pages e.g. 111"
+              min="1"
+              required
+            />
+          </div>
+          <div class="checkbox-wrap">
+              <label for="myCheckbox">Have you read it?</label>
+              <input type="checkbox" id="myCheckbox" />
+          </div>
+        
+        
+          <input type="submit" value="submit">
+        </form>
+        <div id="book-container"></div>
+    </div>
 
-    <div id="book-container"></div>
+ 
 
-  
     <footer>© 2023 My Library. All rights reserved.</footer>
 </body>
 </html>

@@ -25,20 +25,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages.`;
             
-           
+            const buttonContainer = document.createElement("div");
+            buttonContainer.className = "button-container";
+            bookDisplay.appendChild(buttonContainer);
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Delete";
             deleteButton.dataset.index = i;
             deleteButton.className = "delete-button";
             deleteButton.addEventListener("click", removeBook);
-            bookDisplay.appendChild(deleteButton);   
+            buttonContainer.appendChild(deleteButton); ;   
 
             const readButton = document.createElement("button");
             readButton.textContent = myLibrary[i].read ? "Read" : "Unread";
             readButton.dataset.index = i;
             readButton.className = myLibrary[i].read ? "read-button" : "unread-button";
             readButton.addEventListener("click", toggleReadStatus);
-            bookDisplay.appendChild(readButton);
+            buttonContainer.appendChild(readButton);;
 
            
             bookContainer.appendChild(bookDisplay);
@@ -78,14 +80,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
         myLibraryDisplay();
         form.reset();
         form.style.display = "none"; 
+        document.getElementById("overlay").style.display = "none";
     });
 
     document.getElementById("new-book").addEventListener("click", function() {
         if (form.style.display === "none") {
             form.style.display = "block"; 
+            document.getElementById("overlay").style.display = "block"; 
         } else {
             form.style.display = "none"; 
+            document.getElementById("overlay").style.display = "block"; 
         }
+    });
+
+    document.getElementById("overlay").addEventListener("click", function() {
+        form.style.display = "none";
+        document.getElementById("overlay").style.display = "none";
     });
 
     // Sample books

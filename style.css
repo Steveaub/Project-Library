@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 0;
+    
     /* display: flex;
     flex-direction: column;
     align-items: center; */
@@ -21,11 +21,12 @@ header, footer {
 header {
     display: flex;
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    padding-left: 51px;
+   
     align-items: center;
    
     justify-content: space-between;
+    padding-left: 20px; /* Match the padding of the container */
+    padding-right: 20px;
 }
 header .Library .material-symbols-outlined {
     font-size: 2.5rem; 
@@ -34,18 +35,36 @@ header .Library .material-symbols-outlined {
     align-self: center;
 }
 header .Library {
-    padding-top: 25px;
+    
     display: flex;
     align-items: center;
+    padding-left: 100px;
 }
+
+
+
+
 footer {
     background-color: #2C3E50; /* Background color for the footer */
     color: #ffffff; /* Text color for the footer */
     text-align: center; /* Center-align the text within the footer */
     padding: 10px 0; /* Padding for the footer */
-    position: fixed; 
+   margin-top: 50px;
     bottom: 0; /* Align the footer to the bottom */
     width: 100%; /* Full width for the footer */
+}
+
+
+
+#overlay {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    z-index: 10; /* Layer it below the form */
 }
 
 
@@ -54,11 +73,24 @@ footer {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    width: 50%; /* Reduced width */
-    display: none;  
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 500px; */
+    display: flex;
     flex-direction: column;
     align-items: center;
+
+
+ /* ... existing styles ... */
+ position: fixed; /* Position it fixed */
+ top: 50%; /* Center it vertically */
+ left: 50%; /* Center it horizontally */
+ transform: translate(-50%, -50%) scale(1.5); 
+ z-index: 11; 
+ display: none; /* Initially hidden */
+
+ 
+
 }
 
 #hiddenForm div {
@@ -75,17 +107,23 @@ label {
 }
 
 input[type="text"], input[type="number"] {
-    width: 100%;
+    width: 90%;
     padding: 8px; /* Adjusted padding */
     border-radius: 5px;
     border: 1px solid #BDC3C7;
     margin: 5px 0;
     font-size: 0.9em; /* Adjusted font size */
+
 }
 
 input[type="checkbox"] {
     margin-left: 10px;
-    vertical-align: middle; /* Align checkbox */
+    vertical-align: middle; /* eckbox */
+   
+        width: 15px;
+        height: 15px;
+        
+      
 }
 
 input[type="submit"] {
@@ -104,6 +142,7 @@ input[type="submit"]:hover {
 }
 
 #book-container {
+      padding-left: 118px;
     width: 100%;
     display: grid;
     
@@ -116,7 +155,7 @@ input[type="submit"]:hover {
 .book-card {
     background-color: #fff;
     padding: 20px;
-    margin: 10px;
+    margin-top: 50px;
     width: 300px; 
     height: 150px; 
     border-radius: 10px;
@@ -126,7 +165,26 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distribute space */
+    transform: scale(1.1);
+   
 }
+
+.add-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  
+   
+   font-size: 2rem; /* Adjust the font size */
+   font-weight: bold; /* Make the text bold */
+   margin-bottom: 10px; /* Space between the label and the book cards */
+  margin-top:20px ;
+   color: #2C3E50; /* Adjust the color */
+display: flex;
+justify-content: flex-start;
+padding-left: 100px;
+} 
 
 .book-card:hover {
     box-shadow: 0px 6px 12px rgba(8, 51, 240, 0.1); /* Slightly larger shadow on hover */
@@ -258,11 +316,20 @@ margin-top: 20px;
 }
 
 
-.book-list-label {
-    font-size: 2rem; /* Adjust the font size */
-    font-weight: bold; /* Make the text bold */
-    margin-bottom: 10px; /* Space between the label and the book cards */
-    color: #2C3E50; /* Adjust the color */
-display: flex;
-justify-content: flex-start;
+
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+.container {
+    max-width: 1200px; 
+    margin-right: auto;
+    padding-left: 20px; /* space on the left */
+    padding-right: 20px; /* space on the right */
+}
+.book-card .button-container {
+    display: flex;
+    
+    align-items: center; 
 }
