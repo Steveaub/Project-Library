@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         for (let i in myLibrary) {
             const bookDisplay = document.createElement("div");
+            bookDisplay.className = "book-card";
             const book = myLibrary[i];
 
             bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages.`;

@@ -3,13 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="normalize.css" />
     <script src="script.js" defer></script>
     <title>Library</title>
   </head>
   <body>
-    <h1>Library</h1>
+    <header> 
+        <div class="Library"><span class="material-symbols-outlined">
+            book_4
+            </span>My Library</div>
+
+
+
+        <button type="button" id="new-book"><span class="material-symbols-outlined">
+            add
+            </span>ADD BOOK</button>
+
+    </header>
+    
+    <div class="book-list-label"><u>Book List</u></div>
     <form action="" method="post" id="hiddenForm">
       
 
@@ -55,8 +70,7 @@
 
     <div id="book-container"></div>
 
-    <button type="button" id="new-book">ADD BOOK</button>
   
-
+    <footer>© 2023 My Library. All rights reserved.</footer>
 </body>
 </html>
