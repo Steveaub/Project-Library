@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
  
 
-    // Method to toggle read status
     Book.prototype.toggleReadStatus = function() {
         this.read = !this.read;
     };
@@ -26,44 +25,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             bookDisplay.textContent = `${book.title} by ${book.author}, ${book.pages} pages.`;
             
-            // Create delete button
+           
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Delete";
             deleteButton.dataset.index = i;
+            deleteButton.className = "delete-button";
             deleteButton.addEventListener("click", removeBook);
             bookDisplay.appendChild(deleteButton);   
 
-            // Create and append readButton
             const readButton = document.createElement("button");
             readButton.textContent = myLibrary[i].read ? "Read" : "Unread";
             readButton.dataset.index = i;
+            readButton.className = myLibrary[i].read ? "read-button" : "unread-button";
             readButton.addEventListener("click", toggleReadStatus);
             bookDisplay.appendChild(readButton);
 
-            // Append bookDisplay to bookContainer
+           
             bookContainer.appendChild(bookDisplay);
         }
     }
 
     function toggleReadStatus(event) {
-        // Get index from data attribute of clicked read button
         const index = event.target.dataset.index;
     
-        // Toggle read status of book in myLibrary array
         myLibrary[index].toggleReadStatus();
     
-        // Re-render book display to reflect the changes
         myLibraryDisplay();
     }
 
     function removeBook(event) {
-        // Get index from data attribute of clicked delete button
         const index = event.target.dataset.index;
     
-        // Remove book from myLibrary array
         myLibrary.splice(index, 1);
     
-        // Re-render book display
         myLibraryDisplay();
     }
 
@@ -83,14 +77,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         myLibraryDisplay();
         form.reset();
-        form.style.display = "none"; // Hide form after submission
+        form.style.display = "none"; 
     });
 
     document.getElementById("new-book").addEventListener("click", function() {
         if (form.style.display === "none") {
-            form.style.display = "block"; // Show form
+            form.style.display = "block"; 
         } else {
-            form.style.display = "none"; // Hide form
+            form.style.display = "none"; 
         }
     });
 
